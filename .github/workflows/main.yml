@@ -1,10 +1,8 @@
 name: Test Action
 on:
   workflow_dispatch:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+permissions:
+  contents: write
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -26,8 +24,10 @@ jobs:
       - name: Start the server and test
         run: cd org.scope-name && bit start --port 4000 --no-browser & sleep 150 && curl http://localhost:4000 
       - name: Add remote scope
-        run: cd test-data && bit remote add http://localhost:4000       
-      - name: Bit Pull Request
-        uses: bit-tasks/pull-request@main
-      - name: Bit Lanes
-        run: cd test-data && bit lane list --details
+        run: cd test-data && bit remote add http://localhost:4000
+      - name: Bit Tag and Export
+        uses: bit-tasks/tag-export@v1
+      - name: Commit Back
+        uses: bit-tasks/commit-back@main
+        with:
+            skip-push: 'true'

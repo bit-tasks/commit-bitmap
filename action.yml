@@ -1,8 +1,11 @@
-name: 'Bit Verify'
-description: 'Verify issues in bit components'
+name: 'Commit Bitmap'
+description: 'Commit the bitmap file after tag and export'
 inputs:
   ws-dir:
     description: "Workspace json file directory path"
+    required: false
+  skip-push:
+    description: "Skip commit push (for testing)"
     required: false
 runs:
   using: 'node16'
