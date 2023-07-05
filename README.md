@@ -21,8 +21,8 @@ This CD Task, commits back the Bitmap file to the Git repository after exporting
 
 ### `skip-push`
 
-**Optional** Skip push for testing purposes
-.
+**Optional** Skip push for testing purposes.
+
 ## Example usage
 
 Define the `bit-tasks/commit-bitmap@v1` action in your pipeline before using the Verify.
