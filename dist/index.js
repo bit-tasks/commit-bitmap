@@ -4001,7 +4001,12 @@ const run = (exec, skipPush, wsdir) => __awaiter(void 0, void 0, void 0, functio
     yield exec('git config --global user.email "ashan256@gmail.com"', { cwd: wsdir });
     yield exec('git config --global user.name "ashanfernando"', { cwd: wsdir });
     yield exec('git add .bitmap', { cwd: wsdir });
-    yield exec('git commit -m "update .bitmap with new component versions (automated). [skip-ci]"', { cwd: wsdir });
+    try {
+        yield exec('git commit -m "update .bitmap with new component versions (automated). [skip-ci]"', { cwd: wsdir });
+    }
+    catch (error) {
+        console.error(`Error while committing changes`);
+    }
     if (!skipPush) {
         yield exec('git push', { cwd: wsdir });
     }
