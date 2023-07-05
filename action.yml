@@ -1,6 +1,12 @@
 name: 'Commit Bitmap'
 description: 'Commit the bitmap file after tag and export'
 inputs:
+  git-user-name:
+    description: "Git user name"
+    required: true
+  git-user-email:
+    description: "Git user email"
+    required: true
   ws-dir:
     description: "Workspace json file directory path"
     required: false

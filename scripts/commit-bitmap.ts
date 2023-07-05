@@ -1,9 +1,9 @@
 export type ExecFunction = (command: string, options?: {cwd: string}) => Promise<number>;
 
-const run: (exec: ExecFunction, skipPush: string, wsdir: string) => Promise<void> = async (exec, skipPush, wsdir) => {
+const run: (exec: ExecFunction, skipPush: string, gitUserName: string, gitUserEmail: string, wsdir: string) => Promise<void> = async (exec, skipPush, gName, gEmail, wsdir) => {
 
-  await exec('git config --global user.email "ashan256@gmail.com"', { cwd: wsdir });
-  await exec('git config --global user.name "ashanfernando"', { cwd: wsdir });
+  await exec(`git config --global user.name "${gName}"`, { cwd: wsdir });
+  await exec(`git config --global user.email "${gEmail}"`, { cwd: wsdir });
   await exec('git add .bitmap', { cwd: wsdir });
 
   try {

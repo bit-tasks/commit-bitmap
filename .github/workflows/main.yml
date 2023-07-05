@@ -30,4 +30,6 @@ jobs:
       - name: Commit Bitmap
         uses: bit-tasks/commit-bitmap@main
         with:
+            git-user-name: 'ashanfernando'
+            git-user-email: 'ashan256@gmail.com'
             skip-push: 'true'
