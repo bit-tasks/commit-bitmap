@@ -27,7 +27,7 @@ jobs:
         run: cd test-data && bit remote add http://localhost:4000
       - name: Bit Tag and Export
         uses: bit-tasks/tag-export@v1
-      - name: Commit Back
-        uses: bit-tasks/commit-back@main
+      - name: Commit Bitmap
+        uses: bit-tasks/commit-bitmap@main
         with:
             skip-push: 'true'
