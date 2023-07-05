@@ -11,6 +11,18 @@ This CD Task, commits back the Bitmap file to the Git repository after exporting
 
 **Optional** The workspace directory path from the root. Default `"Dir specified in Init Task or ./"`.
 
+### `git-user-name`
+
+**Required** Github user name to commit back .bitmap file to the repository.
+
+### `git-user-email`
+
+**Required** Github user email to commit back .bitmap file to the repository.
+
+### `skip-push`
+
+**Optional** Skip push for testing purposes
+.
 ## Example usage
 
 Define the `bit-tasks/commit-bitmap@v1` action in your pipeline before using the Verify.
@@ -36,6 +48,9 @@ jobs:
           ws-dir: '<WORKSPACE_DIR_PATH>'
       - name: Bit Pull Request
         uses: bit-tasks/commit-bitmap@v1
+        with:
+            git-user-name: '<GIT_USER_NAME>'
+            git-user-email: '<GIT_USER_EMAIL>'
 ```
 
 # Contributor Guide
