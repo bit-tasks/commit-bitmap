@@ -1,5 +1,8 @@
 name: 'Commit Bitmap'
 description: 'Commit the bitmap file after tag and export'
+branding: 
+  icon: 'git-commit'
+  color: 'purple'
 inputs:
   git-user-name:
     description: "Git user name"
