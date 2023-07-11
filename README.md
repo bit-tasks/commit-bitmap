@@ -46,7 +46,7 @@ jobs:
         uses: bit-tasks/init@v1
         with:
           ws-dir: '<WORKSPACE_DIR_PATH>'
-      - name: Bit Pull Request
+      - name: Commit Bitmap
         uses: bit-tasks/commit-bitmap@v1
         with:
             git-user-name: '<GIT_USER_NAME>'
