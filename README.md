@@ -25,7 +25,7 @@ This CD Task, commits back the Bitmap file to the Git repository after exporting
 
 ## Example usage
 
-Define the `bit-tasks/commit-bitmap@v1` action in your pipeline before using the Verify.
+**Note:** Use `bit-task/init@v1` as a prior step in your action before running Bit Verify.
 
 ```yaml
 name: Test Commit Bitmap
