@@ -25,7 +25,7 @@ This task commits back the updated `.Bitmap` file to the Git repository after ex
 
 ## Example usage
 
-**Note:** Use `bit-task/init@v1` as a prior step in your action before running Bit Verify.
+**Note:** Use `bit-task/init@v1` as a prior step in your action before running Bit Commit Bitmap.
 
 ```yaml
 name: Test Commit Bitmap
