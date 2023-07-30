@@ -4,12 +4,6 @@ branding:
   icon: 'git-commit'
   color: 'purple'
 inputs:
-  git-user-name:
-    description: "Git user name"
-    required: true
-  git-user-email:
-    description: "Git user email"
-    required: true
   ws-dir:
     description: "Workspace json file directory path"
     required: false

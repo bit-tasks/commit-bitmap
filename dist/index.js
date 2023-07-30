@@ -3970,9 +3970,15 @@ const core = __importStar(__nccwpck_require__(186));
 const commit_bitmap_1 = __importDefault(__nccwpck_require__(35));
 try {
     const wsDir = core.getInput("ws-dir") || process.env.WSDIR || "./";
-    const gitUserName = core.getInput("git-user-name");
-    const gitUserEmail = core.getInput("git-user-email");
     const skipPush = core.getInput("skip-push");
+    const gitUserName = process.env.GIT_USER_NAME;
+    if (!gitUserName) {
+        throw new Error("Git user name not found");
+    }
+    const gitUserEmail = process.env.GIT_USER_EMAIL;
+    if (!gitUserEmail) {
+        throw new Error("Git user email token not found");
+    }
     (0, commit_bitmap_1.default)(skipPush, gitUserName, gitUserEmail, wsDir);
 }
 catch (error) {
