@@ -3,8 +3,9 @@ import run from "./scripts/commit-bitmap";
 
 try {
   const wsDir: string = core.getInput("ws-dir") || process.env.WSDIR || "./";
-  const skipPush: string | undefined = core.getInput("skip-push");
-  const skipCI: string = core.getInput("skip-ci") === 'false' ? 'false' : 'true';
+  const skipPush: boolean =
+    core.getInput("skip-push") === "true" ? true : false;
+  const skipCI: boolean = core.getInput("skip-ci") === "false" ? false : true;
 
   const gitUserName = process.env.GIT_USER_NAME;
   if (!gitUserName) {

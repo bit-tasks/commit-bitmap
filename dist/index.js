@@ -3970,8 +3970,8 @@ const core = __importStar(__nccwpck_require__(186));
 const commit_bitmap_1 = __importDefault(__nccwpck_require__(35));
 try {
     const wsDir = core.getInput("ws-dir") || process.env.WSDIR || "./";
-    const skipPush = core.getInput("skip-push");
-    const skipCI = core.getInput("skip-ci") === 'false' ? 'false' : 'true';
+    const skipPush = core.getInput("skip-push") === "true" ? true : false;
+    const skipCI = core.getInput("skip-ci") === "false" ? false : true;
     const gitUserName = process.env.GIT_USER_NAME;
     if (!gitUserName) {
         throw new Error("Git user name not found");

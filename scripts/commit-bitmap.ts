@@ -1,8 +1,8 @@
 import { exec } from "@actions/exec";
 
 const run = async (
-  skipPush: string,
-  skipCI: string,
+  skipPush: boolean,
+  skipCI: boolean,
   gitUserName: string,
   gitUserEmail: string,
   wsdir: string
