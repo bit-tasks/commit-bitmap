@@ -2,6 +2,7 @@ import { exec } from "@actions/exec";
 
 const run = async (
   skipPush: string,
+  skipCI: string,
   gitUserName: string,
   gitUserEmail: string,
   wsdir: string
@@ -16,7 +17,7 @@ const run = async (
 
   try {
     await exec(
-      'git commit -m "update .bitmap with new component versions (automated). [skip-ci]"',
+      `git commit -m "update .bitmap with new component versions (automated)${skipCI ? ` [skip-ci]`: ''}"`,
       [],
       { cwd: wsdir }
     );

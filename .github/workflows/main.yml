@@ -30,3 +30,4 @@ jobs:
         uses: bit-tasks/commit-bitmap@main
         with:
             skip-push: 'true'
+            skip-ci: 'false'

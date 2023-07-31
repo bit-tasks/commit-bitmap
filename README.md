@@ -15,6 +15,10 @@ This task commits back the updated `.Bitmap` file to the Git repository after ex
 
 **Optional** Skip push for testing purposes.
 
+### `skip-ci`
+
+**Optional** The`.bitmap` commit message includes `[skip-ci]` to disable subsequent CI triggers as a result of the file modification. Use `skip-ci: 'false'` to remove it.
+
 ## Example usage
 
 **Note:** Use `bit-task/init@v1` as a prior step in your action before running `bit-tasks/commit-bitmap@v1`.

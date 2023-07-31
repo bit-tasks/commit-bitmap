@@ -3971,6 +3971,7 @@ const commit_bitmap_1 = __importDefault(__nccwpck_require__(35));
 try {
     const wsDir = core.getInput("ws-dir") || process.env.WSDIR || "./";
     const skipPush = core.getInput("skip-push");
+    const skipCI = core.getInput("skip-ci") === 'false' ? 'false' : 'true';
     const gitUserName = process.env.GIT_USER_NAME;
     if (!gitUserName) {
         throw new Error("Git user name not found");
@@ -3979,7 +3980,7 @@ try {
     if (!gitUserEmail) {
         throw new Error("Git user email token not found");
     }
-    (0, commit_bitmap_1.default)(skipPush, gitUserName, gitUserEmail, wsDir);
+    (0, commit_bitmap_1.default)(skipPush, skipCI, gitUserName, gitUserEmail, wsDir);
 }
 catch (error) {
     core.setFailed(error.message);
@@ -4004,7 +4005,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const exec_1 = __nccwpck_require__(514);
-const run = (skipPush, gitUserName, gitUserEmail, wsdir) => __awaiter(void 0, void 0, void 0, function* () {
+const run = (skipPush, skipCI, gitUserName, gitUserEmail, wsdir) => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, exec_1.exec)(`git config --global user.name "${gitUserName}"`, [], {
         cwd: wsdir,
     });
@@ -4013,7 +4014,7 @@ const run = (skipPush, gitUserName, gitUserEmail, wsdir) => __awaiter(void 0, vo
     });
     yield (0, exec_1.exec)("git add .bitmap", [], { cwd: wsdir });
     try {
-        yield (0, exec_1.exec)('git commit -m "update .bitmap with new component versions (automated). [skip-ci]"', [], { cwd: wsdir });
+        yield (0, exec_1.exec)(`git commit -m "update .bitmap with new component versions (automated)${skipCI ? ` [skip-ci]` : ''}"`, [], { cwd: wsdir });
     }
     catch (error) {
         console.error(`Error while committing changes`);
