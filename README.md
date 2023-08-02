@@ -3,7 +3,7 @@ Commit back the Bitmap file for CI/CD pipelines
 
 # GitHub Actions
 
-This task commits back the updated `.Bitmap` file to the Git repository after exporting the components to a remote scope.
+This task commits back the updated `.Bitmap` and `pnpm-lock.yaml` files to the Git repository after exporting the components to a remote scope.
 
 ## Inputs
 
@@ -17,7 +17,7 @@ This task commits back the updated `.Bitmap` file to the Git repository after ex
 
 ### `skip-ci`
 
-**Optional** The`.bitmap` commit message includes `[skip-ci]` to disable subsequent CI triggers as a result of the file modification. Use `skip-ci: 'false'` to remove it.
+**Optional** The Git commit message includes `[skip-ci]` to disable subsequent CI triggers as a result of the file modifications. Use `skip-ci: 'false'` to remove it.
 
 ## Example usage
 
