@@ -13,11 +13,11 @@ const run = async (
   await exec(`git config --global user.email "${gitUserEmail}"`, [], {
     cwd: wsdir,
   });
-  await exec("git add .bitmap pnpm-lock.yaml", [], { cwd: wsdir });
+  await exec("git add .bitmap", [], { cwd: wsdir });
 
   try {
     await exec(
-      `git commit -m "update .bitmap and pnpm-lock.yaml with new component versions (automated)${skipCI ? ` [skip-ci]`: ''}"`,
+      `git commit -m "update .bitmap with new component versions (automated)${skipCI ? ` [skip-ci]`: ''}"`,
       [],
       { cwd: wsdir }
     );
