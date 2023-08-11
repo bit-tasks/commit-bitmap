@@ -17,7 +17,7 @@ const run = async (
 
   try {
     await exec(
-      `git commit -m "update .bitmap and pnpm-lock.yaml with new component versions (automated)${skipCI ? ` [skip-ci]`: ''}"`,
+      `git commit -m "update .bitmap and pnpm-lock.yaml with new component and dependency versions (automated)${skipCI ? ` [skip-ci]`: ''}"`,
       [],
       { cwd: wsdir }
     );
