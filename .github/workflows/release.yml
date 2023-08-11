@@ -1,4 +1,4 @@
-name: Build Commit Bitmap
+name: Release Commit Bitmap
 on:
   push:
     branches:
@@ -26,3 +26,5 @@ jobs:
         git add -A
         git diff --quiet && git diff --staged --quiet || git commit -m "Build output [skip ci]"
         git push
+        git tag -a -m "action release" v1 --force
+        git push --follow-tags
