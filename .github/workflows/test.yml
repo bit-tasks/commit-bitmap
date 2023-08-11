@@ -1,4 +1,4 @@
-name: Test Bit Commit Bitmap
+name: Test Task
 on:
   workflow_dispatch:
 permissions:
