@@ -1,0 +1,41 @@
+name: Release Task
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+    - name: Commit and push if changed
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add -A
+        git diff --quiet && git diff --staged --quiet || git commit -m "Build output [skip ci]"
+        git push
+    - name: Bump version and push tag
+      id: bump_version
+      uses: anothrNick/github-tag-action@1.34.0
+      with:
+        default_bump: minor
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ steps.bump_version.outputs.tag }}
+        release_name: Release ${{ steps.bump_version.outputs.tag }}
+        draft: false
+        prerelease: false
