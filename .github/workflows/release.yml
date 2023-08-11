@@ -19,12 +19,21 @@ jobs:
       run: npm ci
     - name: Build
       run: npm run build
-    - name: Commit and push if changed
+    - name: Commit, tag, and push if changed
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add -A
         git diff --quiet && git diff --staged --quiet || git commit -m "Build output [skip ci]"
         git push
-        git tag -a -m "action release" v1 --force
+        VERSION="v1"
+        git tag -a -m "action release" $VERSION --force
         git push --follow-tags
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+    - name: Create GitHub Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
+        draft: false
+        prerelease: false
