@@ -1,4 +1,4 @@
-name: Build Commit Bitmap
+name: Release Commit Bitmap
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -21,8 +21,8 @@ jobs:
       run: npm run build
     - name: Commit and push if changed
       run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add -A
         git diff --quiet && git diff --staged --quiet || git commit -m "Build output [skip ci]"
         git push
