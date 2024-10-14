@@ -3,5 +3,5 @@
  */
 
 export function getHelloWorld() {
-  return 'Hello world!!';
+  return 'Hello world!';
 }
