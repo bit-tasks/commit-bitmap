@@ -3,7 +3,7 @@ Commit back the Bitmap file for CI/CD pipelines
 
 # GitHub Actions
 
-This task commits back the updated `.Bitmap` and `pnpm-lock.yaml` files to the Git repository after exporting the components to a remote scope.
+This task commits back the updated `.Bitmap`, `pnpm-lock.yaml` and `workspace.jsonc` files to the Git repository after exporting the components to a remote scope.
 
 ## Inputs
 
