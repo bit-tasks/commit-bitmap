@@ -4012,9 +4012,9 @@ const run = (skipPush, skipCI, gitUserName, gitUserEmail, wsdir) => __awaiter(vo
     yield (0, exec_1.exec)(`git config --global user.email "${gitUserEmail}"`, [], {
         cwd: wsdir,
     });
-    yield (0, exec_1.exec)("git add .bitmap pnpm-lock.yaml", [], { cwd: wsdir });
+    yield (0, exec_1.exec)("git add .bitmap pnpm-lock.yaml workspace.jsonc", [], { cwd: wsdir });
     try {
-        yield (0, exec_1.exec)(`git commit -m "update .bitmap and pnpm-lock.yaml with new component and dependency versions (automated)${skipCI ? ` [skip-ci]` : ''}"`, [], { cwd: wsdir });
+        yield (0, exec_1.exec)(`git commit -m "update .bitmap, pnpm-lock.yaml and workspace.jsonc with new component and dependency versions (automated)${skipCI ? ` [skip-ci]` : ''}"`, [], { cwd: wsdir });
     }
     catch (error) {
         console.error(`Error while committing changes`);
